@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#fff5f6" />
+  <meta name="description" content="A sincere apology, written from the heart." />
+  <title>Can we talk? ♡</title>
+  <style>
+    :root {
+      --ink: #402b35;
+      --muted: #806b75;
+      --rose: #c85f7a;
+      --rose-dark: #a94360;
+      --paper: rgba(255, 255, 255, .78);
+      --line: rgba(177, 91, 117, .17);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      font-family: ui-rounded, "SF Pro Rounded", "Segoe UI", system-ui, -apple-system, sans-serif;
+      background:
+        radial-gradient(ellipse at 15% 10%, rgba(255, 205, 216, .7), transparent 36%),
+        radial-gradient(ellipse at 88% 78%, rgba(255, 221, 196, .55), transparent 35%),
+        linear-gradient(145deg, #fff8f8, #fff3f1 48%, #fff9f4);
+      overflow-x: hidden;
+    }
+    .grain {
+      position: fixed; inset: 0; pointer-events: none; opacity: .13; z-index: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.18'/%3E%3C/svg%3E");
+    }
+    .floaties { position: fixed; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; }
+    .floaty {
+      position: absolute; bottom: -50px; color: rgba(200, 95, 122, .23);
+      animation: rise linear infinite; user-select: none;
+    }
+    @keyframes rise {
+      from { transform: translateY(0) rotate(0deg); opacity: 0; }
+      12% { opacity: .8; }
+      85% { opacity: .6; }
+      to { transform: translateY(-115vh) rotate(25deg); opacity: 0; }
+    }
+    main { position: relative; z-index: 1; width: min(760px, calc(100% - 28px)); margin: 0 auto; padding: 38px 0 34px; }
+    .topline { display: flex; justify-content: center; align-items: center; gap: 9px; color: var(--muted); font-size: .76rem; letter-spacing: .18em; text-transform: uppercase; margin: 8px 0 24px; }
+    .topline span { width: 25px; height: 1px; background: #d9a2b0; }
+    .card {
+      background: var(--paper); border: 1px solid rgba(255,255,255,.9);
+      border-radius: 30px; padding: clamp(27px, 6vw, 58px);
+      box-shadow: 0 24px 80px rgba(125, 65, 82, .10), inset 0 0 0 1px var(--line);
+      backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+      animation: appear .9s cubic-bezier(.2,.8,.2,1) both;
+    }
+    @keyframes appear { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+    .heart {
+      width: 66px; height: 66px; margin: 0 auto 23px; display: grid; place-items: center;
+      border-radius: 22px; background: linear-gradient(145deg, #ffe0e7, #fff0e9);
+      color: var(--rose); font-size: 29px; box-shadow: 0 8px 25px rgba(200,95,122,.13);
+      transform: rotate(-5deg);
+    }
+    .eyebrow { text-align: center; color: var(--rose-dark); text-transform: uppercase; letter-spacing: .17em; font-size: .72rem; font-weight: 700; }
+    h1 { text-align: center; font-family: Georgia, "Times New Roman", serif; font-weight: 500; font-size: clamp(2.35rem, 8vw, 4.3rem); line-height: 1.04; letter-spacing: -.045em; margin: 13px 0 20px; }
+    h1 em { color: var(--rose); font-weight: 400; }
+    .intro { text-align: center; max-width: 510px; margin: 0 auto 30px; color: var(--muted); font-size: 1.04rem; line-height: 1.8; }
+    .divider { display: flex; align-items: center; gap: 14px; margin: 28px 0; color: #cf8b9d; }
+    .divider::before, .divider::after { content: ""; height: 1px; flex: 1; background: var(--line); }
+    .letter { font-size: 1.02rem; line-height: 1.95; }
+    .letter p { margin: 0 0 17px; }
+    .letter p:last-child { margin-bottom: 0; }
+    .highlight { color: var(--rose-dark); font-family: Georgia, "Times New Roman", serif; font-style: italic; font-size: 1.12em; }
+    .promise {
+      margin: 26px 0; padding: 19px 21px; border-radius: 18px;
+      background: linear-gradient(120deg, rgba(255,226,232,.56), rgba(255,244,235,.7));
+      border: 1px solid rgba(200,95,122,.12); color: #694652; line-height: 1.75;
+    }
+    .promise b { display: block; font-size: .74rem; letter-spacing: .13em; text-transform: uppercase; color: var(--rose-dark); margin-bottom: 5px; }
+    .ask { text-align: center; padding-top: 12px; }
+    .ask h2 { font: 500 clamp(1.65rem, 5vw, 2.25rem)/1.2 Georgia, serif; margin: 0 0 12px; }
+    .ask p { color: var(--muted); line-height: 1.75; margin: 0 auto 23px; max-width: 450px; }
+    button {
+      border: 0; border-radius: 999px; padding: 15px 23px; font: 650 .95rem/1.2 inherit;
+      font-family: inherit; cursor: pointer; transition: transform .2s, box-shadow .2s, background .2s;
+    }
+    button:hover { transform: translateY(-2px); }
+    button:focus-visible { outline: 3px solid #d98ba0; outline-offset: 4px; }
+    .primary { color: white; background: linear-gradient(135deg, #d77891, #b94e6c); box-shadow: 0 10px 22px rgba(185,78,108,.23); }
+    .primary:hover { box-shadow: 0 13px 28px rgba(185,78,108,.3); }
+    .secondary { color: var(--rose-dark); background: rgba(255,255,255,.65); border: 1px solid rgba(185,78,108,.2); margin-left: 8px; }
+    .reply {
+      display: none; margin-top: 22px; padding: 17px 19px; border-radius: 17px;
+      background: rgba(255,255,255,.78); border: 1px solid var(--line); color: #694652; line-height: 1.7;
+      animation: appear .35s ease both;
+    }
+    .reply.show { display: block; }
+    .footer { text-align: center; padding: 24px 12px 0; color: #9b7d88; font-size: .78rem; line-height: 1.7; }
+    .footer strong { color: var(--rose-dark); font-weight: 600; }
+    @media (max-width: 480px) {
+      main { padding-top: 20px; }
+      .card { border-radius: 24px; }
+      .secondary { margin: 10px 0 0; }
+      .actions { display: flex; flex-direction: column; align-items: stretch; max-width: 300px; margin: auto; gap: 10px; }
+      button { width: 100%; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="floaties" id="floaties" aria-hidden="true"></div>
+  <main>
+    <div class="topline"><span></span> something from my heart <span></span></div>
+    <article class="card">
+      <div class="heart" aria-hidden="true">♡</div>
+      <div class="eyebrow">for Kinda</div>
+      <h1>I’m sorry.<br><em>I really am.</em></h1>
+      <p class="intro">I’ve been overwhelmed, and I let that overwhelm turn into words and decisions I didn’t truly want.</p>
+      <div class="divider" aria-hidden="true">♡</div>
+      <section class="letter">
+        <p>Kinda, I’m sorry for saying I wanted to break up. I know words like that can hurt, especially coming from someone who’s supposed to make you feel loved and safe.</p>
+        <p>The truth is, <span class="highlight">I don’t want to lose you.</span> I love you, and I don’t want to throw away what we have because I’m confused, scared, or struggling to handle my feelings.</p>
+        <p>I’m not saying this to pressure you or make you feel responsible for how I feel. I just owe you honesty: I don’t want us to end. I want to slow down, talk properly, listen to each other, and try to understand what happened instead of making a decision while everything feels too much.</p>
+        <p>I know an apology doesn’t instantly undo the hurt, and I don’t expect one little website to fix everything. I’m sorry for my part in this, and I want to show you through my actions—not just words—that I can handle difficult moments better.</p>
+      </section>
+      <div class="promise">
+        <b>What I’m asking for</b>
+        If you’re willing, can we please talk before we decide that this is the end? No pressure to answer right away. I want to hear how you feel, too.
+      </div>
+      <section class="ask">
+        <h2>Can we talk? ♡</h2>
+        <p>You mean so much to me. I’m sorry for making you question that.</p>
+        <div class="actions">
+          <button class="primary" id="talkBtn">I’d like us to talk</button>
+          <button class="secondary" id="readBtn">Read this again, slowly</button>
+        </div>
+        <div class="reply" id="reply" role="status" aria-live="polite">
+          Thank you for hearing me out. Take all the time you need. I’ll respect how you feel, and when you’re ready, I’m here to listen. ♡
+        </div>
+      </section>
+    </article>
+    <footer class="footer">Made with honesty, not to pressure you.<br><strong>— someone who’s sorry and still cares deeply</strong></footer>
+  </main>
+  <script>
+    const layer = document.getElementById('floaties');
+    const symbols = ['♡', '♥', '✧', '·'];
+    for (let i = 0; i < 19; i++) {
+      const el = document.createElement('span');
+      el.className = 'floaty';
+      el.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+      el.style.left = Math.random() * 100 + '%';
+      el.style.fontSize = (12 + Math.random() * 20) + 'px';
+      el.style.animationDuration = (12 + Math.random() * 17) + 's';
+      el.style.animationDelay = (-Math.random() * 24) + 's';
+      layer.appendChild(el);
+    }
+    document.getElementById('talkBtn').addEventListener('click', () => {
+      document.getElementById('reply').classList.add('show');
+      document.getElementById('reply').scrollIntoView({behavior: 'smooth', block: 'nearest'});
+    });
+    document.getElementById('readBtn').addEventListener('click', () => {
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    });
+  </script>
+</body>
+</html>
